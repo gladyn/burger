@@ -1,0 +1,51 @@
+
+.label {
+  font-weight: bold;
+}
+.create-update-form {
+  margin: 5px;
+  padding: 5px;
+}
+.form-group {
+  margin-bottom: 5px;
+}
+body{
+	background-color: palevioletred;
+	
+}
+.main-container{
+	text-align: center;
+}
+ul{
+	text-align: center;
+	align-content: center;
+}
+li{
+	margin-right: 100px;
+	margin-left: 100px;
+	display: inline-block;
+}
+
+.container{
+	background-color: white;
+	border-radius: 4px;
+	margin-top: 20px;
+	padding: 30px;
+	background-color: #d9d7d6;
+	align-content: center;
+}
+.main-container{
+	padding: 17px;
+}
+
+/*for mobile*/
+@media only screen and (max-width: 740px) {
+	li{
+	margin-right: 50px;
+	margin-left: 50px;
+	display: inline-block;
+	}
+	.main-container{
+	padding: 17px;
+	}
+}
