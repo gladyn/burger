@@ -1,12 +1,17 @@
 var express = require("express");
+var methodOverride = require("method-override");
+var bodyParser = require("body-parser");
 
 var app = express();
 
-// Set the port of our application
-// process.env.PORT lets the port be set by Heroku
+// Set the port
 var PORT = process.env.PORT || 8080;
+//public directory to app
+app.use(express.static("public"));
 
-// Sets up the Express app to handle data parsing
+app.use(methodOverride("_method"));
+
+// Sets up the Express app to handle data
 app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
 
@@ -15,21 +20,12 @@ var exphbs = require("express-handlebars");
 app.engine("handlebars", exphbs({ defaultLayout: "main" }));
 app.set("view engine", "handlebars");
 
-var mysql = require("mysql");
+//route access
+var routes = require("./controllers/burgers_controller.js");
 
-var connection = mysql.createConnection({
-  host: "localhost",
-  port: 3306,
-  user: "root",
-  password: "Counter10!",
-  database: "burgers_db"
-});
+app.use(routes);
 
-connection.connect(function(err) {
-  if (err) {
-    console.error("error connecting: " + err.stack);
-    return;
-  }
-
-  console.log("connected as id " + connection.threadId);
+app.listen(PORT, function() {
+  // Log (server-side) when our server has started
+  console.log("Server listening on: http://localhost:" + PORT);
 });
