@@ -16,10 +16,18 @@ var burger = {
     });
   },
 
-  updateOne: function(objColVals, condition, cb) {
-    orm.updateOne("burgers", objColVals, condition, function(res) {
-      cb(res);
-    });
+  updateOne: function( id, cb) {
+    orm.updateOne(
+      "burgers",
+      {
+        devoured: true
+      },
+      id,
+      function(res) {
+        console.log("hello");
+        cb(res);
+      }
+    );
   },
   delete: function(condition, cb) {
     orm.deleteOne("burgers", condition, function(res) {

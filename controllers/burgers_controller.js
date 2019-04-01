@@ -1,9 +1,8 @@
-
 var express = require("express");
 
 var router = express.Router();
 
-// Import the model 
+// Import the model
 var burger = require("../models/burger.js");
 
 //GET
@@ -18,27 +17,23 @@ router.get("/", function(req, res) {
   });
 });
 
-//POST insertOne 
+//POST insertOne
 router.post("/", function(req, res) {
-  burger.insertOne([
-    "burger_name"], [
-    req.body.name], function() {
+  burger.insertOne("burger_name", req.body.name, function() {
     res.redirect("/");
   });
 });
 
-//PUT updateOne 
+//PUT updateOne
 router.put("/:id", function(req, res) {
-  var condition = "id = " + req.params.id;
+  var id = "id=" + req.params.id;
 
-  console.log("condition", condition);
+  console.log("condition", id);
 
-  burger.updateOne({
-    devoured: req.body.devoured
-  }, condition, function() {
+  burger.updateOne(id, function(data) {
+    console.log(data);
     res.redirect("/");
   });
 });
-
 
 module.exports = router;

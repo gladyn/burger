@@ -10,16 +10,21 @@ var orm = {
 		});
 	},
 	insertOne: function(table, colName, colValue, cb) {
-		var query = "INSERT INTO ?? (??) VALUES (?);";
-		connection.query(query, [table, colName, colValue], function(err, result) {
+		var query = `INSERT INTO ${table} (burger_name, devoured) VALUES ("${colValue}", false);`;
+		console.log("hello", colValue);
+		connection.query(query, function(err, result) {
 			if (err) throw err;
 			console.log("Successfully inserted: " + result);
 			cb(result);
 		});
 	},
-	updateOne: function(table, colName, colValue, idCol, idValue, cb) {
-		var query = "UPDATE ?? SET ?? = ? WHERE ?? = ?;";
-		connection.query(query, [table, colName, colValue, idCol, idValue], function(err, result) {
+	updateOne: function(table, colName, id, cb) {
+		console.log("id", id);
+		var devour= colName.devoured
+		console.log(devour);
+		var query = `UPDATE ${table} SET devoured=${devour} WHERE ${id};`;
+		console.log(colName);
+		connection.query(query, function(err, result) {
 			if (err) throw err;
 			console.log("Successfully updated: " + result);
 			cb(result);
