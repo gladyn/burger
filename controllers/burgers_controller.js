@@ -17,14 +17,14 @@ router.get("/", function(req, res) {
   });
 });
 
-//POST insertOne
+//POST insert
 router.post("/", function(req, res) {
   burger.insertOne("burger_name", req.body.name, function() {
     res.redirect("/");
   });
 });
 
-//PUT updateOne
+//PUT update
 router.put("/:id", function(req, res) {
   var id = "id=" + req.params.id;
 
