@@ -18,9 +18,9 @@
   },
   "homepage": "https://github.com/gladyn/burger#readme",
   "dependencies": {
-    "body-parser": "^1.18.3",
+    "body-parser": "^1.20.1",
     "eslint": "^5.15.3",
-    "express": "^4.16.4",
+    "express": "^4.18.2",
     "handlebars": ">=4.1.2",
     "method-override": "^3.0.0",
     "mysql": "^2.16.0",
